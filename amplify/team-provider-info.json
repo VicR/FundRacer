@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fundracer-dev-114719-authRole",
+      "UnauthRoleArn": "arn:aws:iam::252198368167:role/amplify-fundracer-dev-114719-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::252198368167:role/amplify-fundracer-dev-114719-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-fundracer-dev-114719-deployment",
+      "UnauthRoleName": "amplify-fundracer-dev-114719-unauthRole",
+      "StackName": "amplify-fundracer-dev-114719",
+      "StackId": "arn:aws:cloudformation:us-east-1:252198368167:stack/amplify-fundracer-dev-114719/42b95eb0-9e36-11ec-a33a-0a54b19c3a7d",
+      "AmplifyAppId": "d1mtxhvj6gchbd"
+    },
+    "categories": {
+      "auth": {
+        "FundRacer": {}
+      }
+    }
+  }
+}

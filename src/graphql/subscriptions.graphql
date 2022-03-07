@@ -1,0 +1,340 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateTodo {
+  onCreateTodo {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateTodo {
+  onUpdateTodo {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteTodo {
+  onDeleteTodo {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateLevel {
+  onCreateLevel {
+    id
+    amount
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateLevel {
+  onUpdateLevel {
+    id
+    amount
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteLevel {
+  onDeleteLevel {
+    id
+    amount
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateMember {
+  onCreateMember {
+    id
+    name
+    email_address
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateMember {
+  onUpdateMember {
+    id
+    name
+    email_address
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteMember {
+  onDeleteMember {
+    id
+    name
+    email_address
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateDonation {
+  onCreateDonation {
+    id
+    amount
+    donor_name
+    donor_email
+    donation_date
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateDonation {
+  onUpdateDonation {
+    id
+    amount
+    donor_name
+    donor_email
+    donation_date
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteDonation {
+  onDeleteDonation {
+    id
+    amount
+    donor_name
+    donor_email
+    donation_date
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateFundraiser {
+  onCreateFundraiser {
+    id
+    name
+    description
+    goal
+    start_date
+    end_date
+    Donations {
+      items {
+        id
+        amount
+        donor_name
+        donor_email
+        donation_date
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Levels {
+      items {
+        id
+        amount
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Members {
+      items {
+        id
+        name
+        email_address
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateFundraiser {
+  onUpdateFundraiser {
+    id
+    name
+    description
+    goal
+    start_date
+    end_date
+    Donations {
+      items {
+        id
+        amount
+        donor_name
+        donor_email
+        donation_date
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Levels {
+      items {
+        id
+        amount
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Members {
+      items {
+        id
+        name
+        email_address
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteFundraiser {
+  onDeleteFundraiser {
+    id
+    name
+    description
+    goal
+    start_date
+    end_date
+    Donations {
+      items {
+        id
+        amount
+        donor_name
+        donor_email
+        donation_date
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Levels {
+      items {
+        id
+        amount
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Members {
+      items {
+        id
+        name
+        email_address
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

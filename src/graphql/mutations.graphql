@@ -1,0 +1,385 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateTodo(
+  $input: CreateTodoInput!
+  $condition: ModelTodoConditionInput
+) {
+  createTodo(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateTodo(
+  $input: UpdateTodoInput!
+  $condition: ModelTodoConditionInput
+) {
+  updateTodo(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteTodo(
+  $input: DeleteTodoInput!
+  $condition: ModelTodoConditionInput
+) {
+  deleteTodo(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateLevel(
+  $input: CreateLevelInput!
+  $condition: ModelLevelConditionInput
+) {
+  createLevel(input: $input, condition: $condition) {
+    id
+    amount
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateLevel(
+  $input: UpdateLevelInput!
+  $condition: ModelLevelConditionInput
+) {
+  updateLevel(input: $input, condition: $condition) {
+    id
+    amount
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteLevel(
+  $input: DeleteLevelInput!
+  $condition: ModelLevelConditionInput
+) {
+  deleteLevel(input: $input, condition: $condition) {
+    id
+    amount
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateMember(
+  $input: CreateMemberInput!
+  $condition: ModelMemberConditionInput
+) {
+  createMember(input: $input, condition: $condition) {
+    id
+    name
+    email_address
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateMember(
+  $input: UpdateMemberInput!
+  $condition: ModelMemberConditionInput
+) {
+  updateMember(input: $input, condition: $condition) {
+    id
+    name
+    email_address
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteMember(
+  $input: DeleteMemberInput!
+  $condition: ModelMemberConditionInput
+) {
+  deleteMember(input: $input, condition: $condition) {
+    id
+    name
+    email_address
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateDonation(
+  $input: CreateDonationInput!
+  $condition: ModelDonationConditionInput
+) {
+  createDonation(input: $input, condition: $condition) {
+    id
+    amount
+    donor_name
+    donor_email
+    donation_date
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateDonation(
+  $input: UpdateDonationInput!
+  $condition: ModelDonationConditionInput
+) {
+  updateDonation(input: $input, condition: $condition) {
+    id
+    amount
+    donor_name
+    donor_email
+    donation_date
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteDonation(
+  $input: DeleteDonationInput!
+  $condition: ModelDonationConditionInput
+) {
+  deleteDonation(input: $input, condition: $condition) {
+    id
+    amount
+    donor_name
+    donor_email
+    donation_date
+    fundraiserID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateFundraiser(
+  $input: CreateFundraiserInput!
+  $condition: ModelFundraiserConditionInput
+) {
+  createFundraiser(input: $input, condition: $condition) {
+    id
+    name
+    description
+    goal
+    start_date
+    end_date
+    Donations {
+      items {
+        id
+        amount
+        donor_name
+        donor_email
+        donation_date
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Levels {
+      items {
+        id
+        amount
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Members {
+      items {
+        id
+        name
+        email_address
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateFundraiser(
+  $input: UpdateFundraiserInput!
+  $condition: ModelFundraiserConditionInput
+) {
+  updateFundraiser(input: $input, condition: $condition) {
+    id
+    name
+    description
+    goal
+    start_date
+    end_date
+    Donations {
+      items {
+        id
+        amount
+        donor_name
+        donor_email
+        donation_date
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Levels {
+      items {
+        id
+        amount
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Members {
+      items {
+        id
+        name
+        email_address
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteFundraiser(
+  $input: DeleteFundraiserInput!
+  $condition: ModelFundraiserConditionInput
+) {
+  deleteFundraiser(input: $input, condition: $condition) {
+    id
+    name
+    description
+    goal
+    start_date
+    end_date
+    Donations {
+      items {
+        id
+        amount
+        donor_name
+        donor_email
+        donation_date
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Levels {
+      items {
+        id
+        amount
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Members {
+      items {
+        id
+        name
+        email_address
+        fundraiserID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
