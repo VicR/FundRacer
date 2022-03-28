@@ -1,13 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { APIService, Fundraiser } from "../API.service";
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
-import { APIService, Fundraiser } from "./API.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-basic-info',
+  templateUrl: './basic-info.component.html',
+  styleUrls: ['./basic-info.component.scss']
 })
-export class AppComponent implements OnInit {
+export class BasicInfoComponent implements OnInit {
+
+  startDate = new Date(2022, 3, 1);
+  endDate = new Date(2022, 4, 1)
   title = "FundRacer";
   public createForm: FormGroup;
   // private subscription: Subscription | null = null;
@@ -52,10 +55,4 @@ export class AppComponent implements OnInit {
       });
   }
 
-  // ngOnDestroy() {
-  //   if (this.subscription) {
-  //     this.subscription.unsubscribe();
-  //   }
-  //   this.subscription = null;
-  // }
 }
