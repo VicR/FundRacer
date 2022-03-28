@@ -1,133 +1,138 @@
+<amplify-authenticator>
+    <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
 <div class="container">
-  
-    <div id="content">
-      <div id="main-content">
-        <mat-toolbar class="mat-elevation-z5" color="primary">
-          Welcome to RacerX FundRaiser
-          <span class="spacer"></span>
-
-        </mat-toolbar>
-        <mat-tab-group style="padding: 12px;">
-          <mat-tab label="Members">
-            <app-members style="padding: 12px;"> </app-members>
-          </mat-tab>
-          <mat-tab label="Basic Info">
-            <app-basic-info style="padding: 12px;"></app-basic-info>
-          </mat-tab>
-          <mat-tab label="WebPage">
-            <app-file-upload requiredFileType="image/png"></app-file-upload>
-                <div class="container">
-                    <!-- <div class="jumbotron">
-                      <h1>Welcome</h1>
-                      <h1>RacerX FundRaiser</h1>
-                    </div> -->
-                   
-                    <div class="panel panel-primary">
-                      <div class="panel-heading"><h2>About Info</h2></div>
-                      <div class="panel-body">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Give out your Company Info...</mat-label>
-                          <textarea rows="5" cols="40" matInput [(ngModel)]="about_info"></textarea>
-                        </mat-form-field>
-                      
-                        <!-- <h3>
-                            WE ARE DEEPLY ROOTED IN MOTO—WE’VE BEEN HERE ALL OUR LIVES. 
-                        Back in 1998 when we turned an underground newspaper into a shiny color magazine, 
-                        it immediately changed the game with its unprecedented depth of coverage, sense of humor, 
-                        and access to the sport’s biggest names. Today, our readers know they can go to Racer X Online for all the news, 
-                        race results, and event coverage they need, and then enjoy even more detail and perspective in the pages of Racer X Illustrated. 
-                        The mag offers a chance to learn something new on every page and stay connected with the people and personalities that shape our 
-                        sport—the competitors out on the racetrack, as well as the ones behind the scenes—through our exclusive deep-dive stories and 
-                        columns.
+            <div id="content">
+            <div id="main-content">
+                <mat-toolbar class="mat-elevation-z5" color="primary">
+                Welcome  {{ user.username }}! to RacerX FundRaiser
                 
-                        Our trademark has always been insider knowledge from the experts who are at the races and around the sport. 
-                        We have long prided ourselves on our unparalleled race reporting and detailed storytelling. 
-                        We go deep with the riders and teams to provide comprehensive coverage you won’t find anywhere else—all with 
-                        first-class photography and design. It’s a full education in motocross past, present, and future.
-                        </h3> -->
-                      </div>
-                    </div>
-                
-                    <div class="panel-heading"><h2>How are funds raised?</h2></div>
-                    <div class="panel-body">
-                      <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Leave a comment on why does the organization need funds?</mat-label>
-                        <textarea rows="5" cols="40" matInput [(ngModel)]="funds_comment">
-                        </textarea>
-                      </mat-form-field>
-                      <!-- <h3>
-                        Motorsports are expensive; the costs of acquiring one or more vehicles are high, 
-                        and when the costs of maintenance, fuel, and participation in races are taken into account then things really start to add up. 
-                        There are cases where the only reason a racer cannot compete is money; that’s where FundRacer comes in. 
-                        FundRacer will enable racers to have more opportunities by allowing anyone to donate to their team, 
-                        and it will empower local communities and supporters by giving them the opportunity to allow their favorite racer 
-                        to travel and participate in more events.
-                      </h3> -->
-                    </div>
-  
-                
-                    <button class="m-3 mat-raised-button mat-primary" color="green">Save</button>
-                
-                </div>
-          </mat-tab>
-          <mat-tab label="Donation levels">
-              <div class="container">
-                <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();"> Select All donations
-                <div *ngFor="let item of donation_list">
-                  <mat-card class="example-card" >
-                      <mat-card-title-group>
-                        <input type="checkbox" [(ngModel)]="item.selected" (change)="checkIfAllSelected()"> 
-                        <mat-card-title>Donation - ${{ item.money}}</mat-card-title>
-                        <mat-card-subtitle></mat-card-subtitle>
+                <span class="spacer"></span>
+                <button class="mat-raised-button mat-primary" (click)="signOut()" style="float: right !important;">Sign Out</button>
+                </mat-toolbar>
+                <mat-tab-group style="padding: 12px;">
+                <mat-tab label="Members">
+                    <app-members style="padding: 12px;"> </app-members>
+                </mat-tab>
+                <mat-tab label="Basic Info">
+                    <app-basic-info style="padding: 12px;"></app-basic-info>
+                </mat-tab>
+                <mat-tab label="WebPage">
+                    <app-file-upload requiredFileType="image/png"></app-file-upload>
+                        <div class="container">
+                            <!-- <div class="jumbotron">
+                            <h1>Welcome</h1>
+                            <h1>RacerX FundRaiser</h1>
+                            </div> -->
                         
-                      </mat-card-title-group>
-                      <div fxLayout="row">
-                          <mat-card fxLayout="row" fxFlex="80%" class="center space-top">
-                            <mat-card-content fxLayout.gt-sm="row">
-                              <div fxLayout.gt-sm="column" fxFlex.gt-sm="40%">
-                                  <img mat-card-lg-image src="assets\racer.png" >
-                              </div>
-                              <div fxLayout.gt-sm="column" fxFlex.gt-sm="50%" class="gutter">
-                                  <strong><a href="#">Donation Impact:</a></strong>
-                                  <ul>
-                                      <li>{{item.impact}}</li>
-                                  </ul>
-                                  <strong><a href="#">Donation Reward:</a></strong>
-                                  <ul>
-                                      <li>{{item.rewards}}</li>
-                                  </ul>
-                              </div>
+                            <div class="panel panel-primary">
+                            <div class="panel-heading"><h2>About Info</h2></div>
+                            <div class="panel-body">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Give out your Company Info...</mat-label>
+                                <textarea rows="5" cols="40" matInput [(ngModel)]="about_info"></textarea>
+                                </mat-form-field>
+                            
+                                <!-- <h3>
+                                    WE ARE DEEPLY ROOTED IN MOTO—WE’VE BEEN HERE ALL OUR LIVES. 
+                                Back in 1998 when we turned an underground newspaper into a shiny color magazine, 
+                                it immediately changed the game with its unprecedented depth of coverage, sense of humor, 
+                                and access to the sport’s biggest names. Today, our readers know they can go to Racer X Online for all the news, 
+                                race results, and event coverage they need, and then enjoy even more detail and perspective in the pages of Racer X Illustrated. 
+                                The mag offers a chance to learn something new on every page and stay connected with the people and personalities that shape our 
+                                sport—the competitors out on the racetrack, as well as the ones behind the scenes—through our exclusive deep-dive stories and 
+                                columns.
+                        
+                                Our trademark has always been insider knowledge from the experts who are at the races and around the sport. 
+                                We have long prided ourselves on our unparalleled race reporting and detailed storytelling. 
+                                We go deep with the riders and teams to provide comprehensive coverage you won’t find anywhere else—all with 
+                                first-class photography and design. It’s a full education in motocross past, present, and future.
+                                </h3> -->
+                            </div>
+                            </div>
+                        
+                            <div class="panel-heading"><h2>How are funds raised?</h2></div>
+                            <div class="panel-body">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Leave a comment on why does the organization need funds?</mat-label>
+                                <textarea rows="5" cols="40" matInput [(ngModel)]="funds_comment">
+                                </textarea>
+                            </mat-form-field>
+                            <!-- <h3>
+                                Motorsports are expensive; the costs of acquiring one or more vehicles are high, 
+                                and when the costs of maintenance, fuel, and participation in races are taken into account then things really start to add up. 
+                                There are cases where the only reason a racer cannot compete is money; that’s where FundRacer comes in. 
+                                FundRacer will enable racers to have more opportunities by allowing anyone to donate to their team, 
+                                and it will empower local communities and supporters by giving them the opportunity to allow their favorite racer 
+                                to travel and participate in more events.
+                            </h3> -->
+                            </div>
+        
+                        
+                            <button class="m-3 mat-raised-button mat-primary" color="green">Save</button>
+                        
+                        </div>
+                </mat-tab>
+                <mat-tab label="Donation levels">
+                    <div class="container">
+                        <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();"> Select All donations
+                        <div *ngFor="let item of donation_list">
+                        <mat-card class="example-card" >
+                            <mat-card-title-group>
+                                <input type="checkbox" [(ngModel)]="item.selected" (change)="checkIfAllSelected()"> 
+                                <mat-card-title>Donation - ${{ item.money}}</mat-card-title>
+                                <mat-card-subtitle></mat-card-subtitle>
+                                
+                            </mat-card-title-group>
+                            <div fxLayout="row">
+                                <mat-card fxLayout="row" fxFlex="80%" class="center space-top">
+                                    <mat-card-content fxLayout.gt-sm="row">
+                                    <div fxLayout.gt-sm="column" fxFlex.gt-sm="40%">
+                                        <img mat-card-lg-image src="assets\racer.png" >
+                                    </div>
+                                    <div fxLayout.gt-sm="column" fxFlex.gt-sm="50%" class="gutter">
+                                        <strong><a href="#">Donation Impact:</a></strong>
+                                        <ul>
+                                            <li>{{item.impact}}</li>
+                                        </ul>
+                                        <strong><a href="#">Donation Reward:</a></strong>
+                                        <ul>
+                                            <li>{{item.rewards}}</li>
+                                        </ul>
+                                    </div>
+                                    </mat-card-content>
+                                </mat-card>
+                            </div>
+                            <mat-card-content>
+                                
                             </mat-card-content>
-                          </mat-card>
-                      </div>
-                      <mat-card-content>
-                        
-                      </mat-card-content>
-                    </mat-card>
-                </div>
-          
-          
-                <mat-checkbox [(ngModel)]="checkbox_value" 
-                class="example-ripple-checkbox">Set minimum donation amount</mat-checkbox>
+                            </mat-card>
+                        </div>
                 
-                <mat-form-field class="example-ripple-form-field" appearance="fill">
-                  <input matInput [(ngModel)]="min_donationamount" type="number" placeholder="Amount in dollars">
-                </mat-form-field>
-          
-                <!-- <div class="row">
-                  <mat-slide-toggle>Would you like to add images to your Supporter levels?</mat-slide-toggle>
-                </div> -->
-          
-                <button class="m-3 mat-raised-button mat-primary" color="green">Save</button>
+                
+                        <mat-checkbox [(ngModel)]="checkbox_value" 
+                        class="example-ripple-checkbox">Set minimum donation amount</mat-checkbox>
+                        
+                        <mat-form-field class="example-ripple-form-field" appearance="fill">
+                        <input matInput [(ngModel)]="min_donationamount" type="number" placeholder="Amount in dollars">
+                        </mat-form-field>
+                
+                        <!-- <div class="row">
+                        <mat-slide-toggle>Would you like to add images to your Supporter levels?</mat-slide-toggle>
+                        </div> -->
+                
+                        <button class="m-3 mat-raised-button mat-primary" color="green">Save</button>
+                    </div>
+                </mat-tab>
+                <!-- <mat-tab label="Member Message">
+        
+                </mat-tab> -->
+                </mat-tab-group>
             </div>
-          </mat-tab>
-          <!-- <mat-tab label="Member Message">
-  
-          </mat-tab> -->
-        </mat-tab-group>
-      </div>
-    </div>
-  </div>
+            </div>
+</div>
+
+</ng-template>
+</amplify-authenticator>
   
   
   

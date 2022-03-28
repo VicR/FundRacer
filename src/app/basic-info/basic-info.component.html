@@ -62,8 +62,7 @@
 
 
 <div class="content" role="main">
-    <amplify-authenticator>
-      <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
+    
         <!-- Toolbar -->
         <!-- <div class="toolbar" role="banner">
           <img width="40" alt="Angular Logo"
@@ -72,8 +71,7 @@
           <div class="spacer"></div>
          
         </div> -->
-        <h1>Welcome {{ user.username }}!</h1>
-        <button class="mat-raised-button mat-primary" (click)="signOut()" style="float: right !important;">Sign Out</button>
+       
           <h2>Create Fundraiser</h2>
           <form autocomplete="off" [formGroup]="createForm" (ngSubmit)="onCreate(createForm.value)">
               <!-- <label>Name: </label>
@@ -156,8 +154,7 @@
           <p>FundRacer is part of: </p>
           <a hef="https://racerx.com" target="_blank" rel="noopener"> RacerX</a>
         </footer>
-      </ng-template>
-    </amplify-authenticator>
+
   
     <!-- Highlight Card -->
     <!-- <div class="card highlight-card card-small">
