@@ -49,6 +49,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AddMemberPopupComponent } from './add-member-popup/add-member-popup.component';
+import { AddLevelPopupComponent } from './add-level-popup/add-level-popup.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { LoginComponent } from './login/login.component';
 import { CampaignComponent } from './campaign/campaign.component';
@@ -63,6 +64,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     AddMemberPopupComponent,
+    AddLevelPopupComponent,
     FileUploadComponent,
     LoginComponent,
     CampaignComponent,
@@ -139,6 +141,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FlexLayoutModule,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AddMemberPopupComponent]
+  entryComponents: [AddMemberPopupComponent, AddLevelPopupComponent]
 })
 export class AppModule { }

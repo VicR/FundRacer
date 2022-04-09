@@ -86,4 +86,59 @@
       clear: both;
     }
   }
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
   
+  .example-container>* {
+    width: 100%;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-container>* {
+    width: 100%;
+  }
+  
+  .level-card {
+    max-width: 50% !important;
+    background-color: lightblue;
+    margin: 10px !important;
+  }
+
+  .donation-card {
+    max-width: 50% !important;
+    background-color: lightsteelblue;
+    margin: 10px !important;
+  }
+
+  .total-card {
+    max-width: 20% !important;
+    background-color: darkkhaki;
+    margin: 10px !important;
+  }
+
+  .content {
+    padding: 8px !important;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .footer {
+    margin-top: 8px;
+    /* display: flex; */
+    align-items: center;
+    line-height: 20px;
+  }
+  
+  .footer a {
+    display: flex;
+    align-items: center;
+  }

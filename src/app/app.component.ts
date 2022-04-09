@@ -40,17 +40,17 @@ export class AppComponent implements OnInit {
     // );
   }
 
-  public onCreate(fundraiser: Fundraiser) {
-    this.api
-      .CreateFundraiser(fundraiser)
-      .then((event) => {
-        console.log("Fundraiser created!");
-        this.createForm.reset();
-      })
-      .catch((e) => {
-        console.log("Error creating Fundraiser...", e);
-      });
-  }
+  // public onCreate(fundraiser: Fundraiser) {
+  //   this.api
+  //     .CreateFundraiser(fundraiser)
+  //     .then((event) => {
+  //       console.log("Fundraiser created!");
+  //       this.createForm.reset();
+  //     })
+  //     .catch((e) => {
+  //       console.log("Error creating Fundraiser...", e);
+  //     });
+  // }
 
   // ngOnDestroy() {
   //   if (this.subscription) {

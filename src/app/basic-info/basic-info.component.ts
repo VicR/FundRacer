@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { APIService, Fundraiser } from "../API.service";
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
 
@@ -12,14 +12,16 @@ export class BasicInfoComponent implements OnInit {
   startDate = new Date(2022, 3, 1);
   endDate = new Date(2022, 4, 1)
   title = "FundRacer";
-  public createForm: FormGroup;
+  public fundraiserForm: FormGroup;
   // private subscription: Subscription | null = null;
 
   /* declare fundraisers variable */
-  public fundraisers: Array<Fundraiser> = [];
+  // public fundraisers: Array<Fundraiser> = [];
+  @Input() fundraisers: Array<Fundraiser>;
+  @Input() user;
 
   constructor(private api: APIService, private fb: FormBuilder) {
-    this.createForm = this.fb.group({
+    this.fundraiserForm = this.fb.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
       start_date: ["", Validators.required],
@@ -30,9 +32,9 @@ export class BasicInfoComponent implements OnInit {
 
   async ngOnInit() {
     /* fetch fundraisers when app loads */
-    this.api.ListFundraisers().then(event => {
-      this.fundraisers = event.items as Fundraiser[];
-    });
+    // this.api.ListFundraisers().then(event => {
+    //   this.fundraisers = event.items as Fundraiser[];
+    // });
 
     /* subscribe to new fundraisers being created */
     // this.subscription = <Subscription>(
@@ -43,12 +45,15 @@ export class BasicInfoComponent implements OnInit {
     // );
   }
 
-  public onCreate(fundraiser: Fundraiser) {
+  public onCreateFundraiser(fundraiser: Fundraiser) {
+    console.log('creating fundraiser: ', fundraiser)
+    fundraiser.creatorID = this.user.attributes.sub
     this.api
       .CreateFundraiser(fundraiser)
       .then((event) => {
         console.log("Fundraiser created!");
-        this.createForm.reset();
+        this.fundraiserForm.reset();
+        window.location.reload();
       })
       .catch((e) => {
         console.log("Error creating Fundraiser...", e);

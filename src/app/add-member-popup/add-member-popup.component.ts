@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { formContainer } from 'aws-amplify';
 import { format } from 'path';
+import { APIService, Member } from "../API.service";
 
 @Component({
   selector: 'app-add-member-popup',
@@ -11,38 +12,31 @@ import { format } from 'path';
 })
 export class AddMemberPopupComponent implements OnInit {
 
+  memberForm: FormGroup
 
-  contactForm: FormGroup
-
-  countries = ['USA', 'Germany', 'Italy', 'France']
-
-  requestTypes = ['Claim', 'Feedback', 'Help Request']
-
-  constructor(public dialogRef: MatDialogRef<AddMemberPopupComponent>) {
-    this.contactForm = this.createFormGroup()
+  constructor(public dialogRef: MatDialogRef<AddMemberPopupComponent>, private api: APIService, private fb: FormBuilder) {
+    // this.memberForm = this.createMemberFormGroup()
+    this.memberForm = this.fb.group({
+      name: ["", Validators.required],
+      last_name: ["", Validators.required],
+      email_address: ["", Validators.required],
+      phone_number: ["", Validators.required],
+    });
   }
 
   // Step 1
-  createFormGroup() {
+  createMemberFormGroup() {
     return new FormGroup({
-        first_name : new FormControl(),
-        last_name : new FormControl(),
-        email: new FormControl(),
-        mobile: new FormControl(),
-        country: new FormControl(),
-       password : new FormControl(),
-       confirmpassword : new FormControl(),
-       Address : new FormControl(),
-       Street : new FormControl(),
-       state : new FormControl(),
-       city : new FormControl(),
-       zip : new FormControl()
+      name : new FormControl(),
+      last_name : new FormControl(),
+      email_address: new FormControl(),
+      phone_number: new FormControl()
     })
   }
 
   onSubmit() {
     // // Make sure to create a deep copy of the form-model
-    // const result: ContactRequest = Object.assign({}, this.contactForm.value);
+    // const result: ContactRequest = Object.assign({}, this.memberForm.value);
     // result.personalData = Object.assign({}, result.personalData);
 
     // Do useful stuff with the gathered data
@@ -51,7 +45,7 @@ export class AddMemberPopupComponent implements OnInit {
 
   revert() {
     // Resets to blank object
-    this.contactForm.reset();    
+    this.memberForm.reset();    
   }
 
   onNoClick(): void {
@@ -65,8 +59,22 @@ export class AddMemberPopupComponent implements OnInit {
   }
 
   save() {
-    this.dialogRef.close({data : this.contactForm.value});
+    this.dialogRef.close({data : this.memberForm.value});
   }
 
+  public onCreateMember(member: Member) {
+    console.log(member)
+    member.fundraiserID = "75055fa7-b60b-40a7-a0ce-3a5c8199a91f"
+    this.api
+      .CreateMember(member)
+      .then((event) => {
+        console.log("Member created!");
+        this.memberForm.reset();
+        window.location.reload();
+      })
+      .catch((e) => {
+        console.log("Error creating Member...", e);
+      });
+  }
 }
 

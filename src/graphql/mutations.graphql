@@ -202,6 +202,7 @@ mutation CreateFundraiser(
     goal
     start_date
     end_date
+    creatorID
     Donations {
       items {
         id
@@ -223,6 +224,8 @@ mutation CreateFundraiser(
       items {
         id
         amount
+        impact
+        reward
         fundraiserID
         createdAt
         updatedAt
@@ -237,7 +240,9 @@ mutation CreateFundraiser(
       items {
         id
         name
+        last_name
         email_address
+        phone_number
         fundraiserID
         createdAt
         updatedAt
@@ -266,6 +271,7 @@ mutation UpdateFundraiser(
     goal
     start_date
     end_date
+    creatorID
     Donations {
       items {
         id
@@ -287,6 +293,8 @@ mutation UpdateFundraiser(
       items {
         id
         amount
+        impact
+        reward
         fundraiserID
         createdAt
         updatedAt
@@ -330,6 +338,7 @@ mutation DeleteFundraiser(
     goal
     start_date
     end_date
+    creatorID
     Donations {
       items {
         id
@@ -351,6 +360,8 @@ mutation DeleteFundraiser(
       items {
         id
         amount
+        impact
+        reward
         fundraiserID
         createdAt
         updatedAt
@@ -365,7 +376,9 @@ mutation DeleteFundraiser(
       items {
         id
         name
+        last_name
         email_address
+        phone_number
         fundraiserID
         createdAt
         updatedAt

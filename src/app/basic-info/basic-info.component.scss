@@ -10,15 +10,16 @@
   .form-container {
     display: flex;
     flex-direction: column;
+    max-width: 50%;
   }
   
   .form-container > * {
     width: 100%;
   }
 
-  .example-card {
+  .fundraiser-card {
     max-width: 50% !important;
-    background-color:lightblue;
+    background-color: bisque;
     margin: 10px !important;
   }
 
