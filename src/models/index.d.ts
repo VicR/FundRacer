@@ -20,13 +20,11 @@ type FundraiserMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type TodoMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
 export declare class Level {
   readonly id: string;
   readonly amount: number;
+  readonly impact: string;
+  readonly reward: string;
   readonly fundraiserID: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
@@ -37,7 +35,9 @@ export declare class Level {
 export declare class Member {
   readonly id: string;
   readonly name?: string;
+  readonly last_name?: string;
   readonly email_address: string;
+  readonly phone_number?: string;
   readonly fundraiserID: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
@@ -51,6 +51,7 @@ export declare class Donation {
   readonly donor_name?: string;
   readonly donor_email?: string;
   readonly donation_date?: string;
+  readonly donorID?: string;
   readonly fundraiserID: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
@@ -68,18 +69,9 @@ export declare class Fundraiser {
   readonly Donations?: (Donation | null)[];
   readonly Levels?: (Level | null)[];
   readonly Members?: (Member | null)[];
+  readonly creatorID?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Fundraiser, FundraiserMetaData>);
   static copyOf(source: Fundraiser, mutator: (draft: MutableModel<Fundraiser, FundraiserMetaData>) => MutableModel<Fundraiser, FundraiserMetaData> | void): Fundraiser;
-}
-
-export declare class Todo {
-  readonly id: string;
-  readonly name: string;
-  readonly description?: string;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<Todo, TodoMetaData>);
-  static copyOf(source: Todo, mutator: (draft: MutableModel<Todo, TodoMetaData>) => MutableModel<Todo, TodoMetaData> | void): Todo;
 }

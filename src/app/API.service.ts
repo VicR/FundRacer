@@ -108,12 +108,16 @@ export type DeleteTodoInput = {
 export type CreateLevelInput = {
   id?: string | null;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   _version?: number | null;
 };
 
 export type ModelLevelConditionInput = {
   amount?: ModelFloatInput | null;
+  impact?: ModelStringInput | null;
+  reward?: ModelStringInput | null;
   fundraiserID?: ModelIDInput | null;
   and?: Array<ModelLevelConditionInput | null> | null;
   or?: Array<ModelLevelConditionInput | null> | null;
@@ -152,6 +156,8 @@ export type Level = {
   __typename: "Level";
   id: string;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -163,6 +169,8 @@ export type Level = {
 export type UpdateLevelInput = {
   id: string;
   amount?: number | null;
+  impact?: string | null;
+  reward?: string | null;
   fundraiserID?: string | null;
   _version?: number | null;
 };
@@ -176,6 +184,8 @@ export type CreateMemberInput = {
   id?: string | null;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   _version?: number | null;
 };
@@ -183,6 +193,8 @@ export type CreateMemberInput = {
 export type ModelMemberConditionInput = {
   name?: ModelStringInput | null;
   email_address?: ModelStringInput | null;
+  last_name?: ModelStringInput | null;
+  phone_number?: ModelStringInput | null;
   fundraiserID?: ModelIDInput | null;
   and?: Array<ModelMemberConditionInput | null> | null;
   or?: Array<ModelMemberConditionInput | null> | null;
@@ -194,6 +206,8 @@ export type Member = {
   id: string;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -206,6 +220,8 @@ export type UpdateMemberInput = {
   id: string;
   name?: string | null;
   email_address?: string | null;
+  last_name?: string | null;
+  phone_number?: string | null;
   fundraiserID?: string | null;
   _version?: number | null;
 };
@@ -221,6 +237,7 @@ export type CreateDonationInput = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   _version?: number | null;
 };
@@ -230,6 +247,7 @@ export type ModelDonationConditionInput = {
   donor_name?: ModelStringInput | null;
   donor_email?: ModelStringInput | null;
   donation_date?: ModelStringInput | null;
+  donorID?: ModelStringInput | null;
   fundraiserID?: ModelIDInput | null;
   and?: Array<ModelDonationConditionInput | null> | null;
   or?: Array<ModelDonationConditionInput | null> | null;
@@ -243,6 +261,7 @@ export type Donation = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -257,6 +276,7 @@ export type UpdateDonationInput = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID?: string | null;
   _version?: number | null;
 };
@@ -273,6 +293,7 @@ export type CreateFundraiserInput = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   _version?: number | null;
 };
 
@@ -282,6 +303,7 @@ export type ModelFundraiserConditionInput = {
   goal?: ModelFloatInput | null;
   start_date?: ModelStringInput | null;
   end_date?: ModelStringInput | null;
+  creatorID?: ModelStringInput | null;
   and?: Array<ModelFundraiserConditionInput | null> | null;
   or?: Array<ModelFundraiserConditionInput | null> | null;
   not?: ModelFundraiserConditionInput | null;
@@ -295,6 +317,7 @@ export type Fundraiser = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   Donations?: ModelDonationConnection | null;
   Levels?: ModelLevelConnection | null;
   Members?: ModelMemberConnection | null;
@@ -333,6 +356,7 @@ export type UpdateFundraiserInput = {
   goal?: number | null;
   start_date?: string | null;
   end_date?: string | null;
+  creatorID?: string | null;
   _version?: number | null;
 };
 
@@ -360,6 +384,8 @@ export type ModelTodoConnection = {
 export type ModelLevelFilterInput = {
   id?: ModelIDInput | null;
   amount?: ModelFloatInput | null;
+  impact?: ModelStringInput | null;
+  reward?: ModelStringInput | null;
   fundraiserID?: ModelIDInput | null;
   and?: Array<ModelLevelFilterInput | null> | null;
   or?: Array<ModelLevelFilterInput | null> | null;
@@ -370,6 +396,8 @@ export type ModelMemberFilterInput = {
   id?: ModelIDInput | null;
   name?: ModelStringInput | null;
   email_address?: ModelStringInput | null;
+  last_name?: ModelStringInput | null;
+  phone_number?: ModelStringInput | null;
   fundraiserID?: ModelIDInput | null;
   and?: Array<ModelMemberFilterInput | null> | null;
   or?: Array<ModelMemberFilterInput | null> | null;
@@ -382,6 +410,7 @@ export type ModelDonationFilterInput = {
   donor_name?: ModelStringInput | null;
   donor_email?: ModelStringInput | null;
   donation_date?: ModelStringInput | null;
+  donorID?: ModelStringInput | null;
   fundraiserID?: ModelIDInput | null;
   and?: Array<ModelDonationFilterInput | null> | null;
   or?: Array<ModelDonationFilterInput | null> | null;
@@ -395,6 +424,7 @@ export type ModelFundraiserFilterInput = {
   goal?: ModelFloatInput | null;
   start_date?: ModelStringInput | null;
   end_date?: ModelStringInput | null;
+  creatorID?: ModelStringInput | null;
   and?: Array<ModelFundraiserFilterInput | null> | null;
   or?: Array<ModelFundraiserFilterInput | null> | null;
   not?: ModelFundraiserFilterInput | null;
@@ -447,6 +477,8 @@ export type CreateLevelMutation = {
   __typename: "Level";
   id: string;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -459,6 +491,8 @@ export type UpdateLevelMutation = {
   __typename: "Level";
   id: string;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -471,6 +505,8 @@ export type DeleteLevelMutation = {
   __typename: "Level";
   id: string;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -484,6 +520,8 @@ export type CreateMemberMutation = {
   id: string;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -497,6 +535,8 @@ export type UpdateMemberMutation = {
   id: string;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -510,6 +550,8 @@ export type DeleteMemberMutation = {
   id: string;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -525,6 +567,7 @@ export type CreateDonationMutation = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -540,6 +583,7 @@ export type UpdateDonationMutation = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -555,6 +599,7 @@ export type DeleteDonationMutation = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -571,15 +616,13 @@ export type CreateFundraiserMutation = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   Donations?: {
     __typename: "ModelDonationConnection";
     items: Array<{
       __typename: "Donation";
       id: string;
       amount: number;
-      donor_name?: string | null;
-      donor_email?: string | null;
-      donation_date?: string | null;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -611,8 +654,6 @@ export type CreateFundraiserMutation = {
     items: Array<{
       __typename: "Member";
       id: string;
-      name?: string | null;
-      email_address: string;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -638,6 +679,7 @@ export type UpdateFundraiserMutation = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   Donations?: {
     __typename: "ModelDonationConnection";
     items: Array<{
@@ -647,6 +689,7 @@ export type UpdateFundraiserMutation = {
       donor_name?: string | null;
       donor_email?: string | null;
       donation_date?: string | null;
+      donorID?: string | null;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -680,6 +723,8 @@ export type UpdateFundraiserMutation = {
       id: string;
       name?: string | null;
       email_address: string;
+      last_name: string;
+      phone_number: string;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -705,6 +750,7 @@ export type DeleteFundraiserMutation = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   Donations?: {
     __typename: "ModelDonationConnection";
     items: Array<{
@@ -714,6 +760,7 @@ export type DeleteFundraiserMutation = {
       donor_name?: string | null;
       donor_email?: string | null;
       donation_date?: string | null;
+      donorID?: string | null;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -747,6 +794,8 @@ export type DeleteFundraiserMutation = {
       id: string;
       name?: string | null;
       email_address: string;
+      last_name: string;
+      phone_number: string;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -814,6 +863,8 @@ export type GetLevelQuery = {
   __typename: "Level";
   id: string;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -828,6 +879,8 @@ export type ListLevelsQuery = {
     __typename: "Level";
     id: string;
     amount: number;
+    impact: string;
+    reward: string;
     fundraiserID: string;
     createdAt: string;
     updatedAt: string;
@@ -845,6 +898,8 @@ export type SyncLevelsQuery = {
     __typename: "Level";
     id: string;
     amount: number;
+    impact: string;
+    reward: string;
     fundraiserID: string;
     createdAt: string;
     updatedAt: string;
@@ -861,6 +916,8 @@ export type GetMemberQuery = {
   id: string;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -876,6 +933,8 @@ export type ListMembersQuery = {
     id: string;
     name?: string | null;
     email_address: string;
+    last_name: string;
+    phone_number: string;
     fundraiserID: string;
     createdAt: string;
     updatedAt: string;
@@ -894,6 +953,8 @@ export type SyncMembersQuery = {
     id: string;
     name?: string | null;
     email_address: string;
+    last_name: string;
+    phone_number: string;
     fundraiserID: string;
     createdAt: string;
     updatedAt: string;
@@ -912,6 +973,7 @@ export type GetDonationQuery = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -929,6 +991,7 @@ export type ListDonationsQuery = {
     donor_name?: string | null;
     donor_email?: string | null;
     donation_date?: string | null;
+    donorID?: string | null;
     fundraiserID: string;
     createdAt: string;
     updatedAt: string;
@@ -949,6 +1012,7 @@ export type SyncDonationsQuery = {
     donor_name?: string | null;
     donor_email?: string | null;
     donation_date?: string | null;
+    donorID?: string | null;
     fundraiserID: string;
     createdAt: string;
     updatedAt: string;
@@ -968,6 +1032,7 @@ export type GetFundraiserQuery = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   Donations?: {
     __typename: "ModelDonationConnection";
     items: Array<{
@@ -977,6 +1042,7 @@ export type GetFundraiserQuery = {
       donor_name?: string | null;
       donor_email?: string | null;
       donation_date?: string | null;
+      donorID?: string | null;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -1010,6 +1076,8 @@ export type GetFundraiserQuery = {
       id: string;
       name?: string | null;
       email_address: string;
+      last_name: string;
+      phone_number: string;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -1037,6 +1105,7 @@ export type ListFundraisersQuery = {
     goal: number;
     start_date: string;
     end_date: string;
+    creatorID: string;
     Donations?: {
       __typename: "ModelDonationConnection";
       nextToken?: string | null;
@@ -1072,6 +1141,7 @@ export type SyncFundraisersQuery = {
     goal: number;
     start_date: string;
     end_date: string;
+    creatorID: string;
     Donations?: {
       __typename: "ModelDonationConnection";
       nextToken?: string | null;
@@ -1137,6 +1207,8 @@ export type OnCreateLevelSubscription = {
   __typename: "Level";
   id: string;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1149,6 +1221,8 @@ export type OnUpdateLevelSubscription = {
   __typename: "Level";
   id: string;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1161,6 +1235,8 @@ export type OnDeleteLevelSubscription = {
   __typename: "Level";
   id: string;
   amount: number;
+  impact: string;
+  reward: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1174,6 +1250,8 @@ export type OnCreateMemberSubscription = {
   id: string;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1187,6 +1265,8 @@ export type OnUpdateMemberSubscription = {
   id: string;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1200,6 +1280,8 @@ export type OnDeleteMemberSubscription = {
   id: string;
   name?: string | null;
   email_address: string;
+  last_name: string;
+  phone_number: string;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1215,6 +1297,7 @@ export type OnCreateDonationSubscription = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1230,6 +1313,7 @@ export type OnUpdateDonationSubscription = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1245,6 +1329,7 @@ export type OnDeleteDonationSubscription = {
   donor_name?: string | null;
   donor_email?: string | null;
   donation_date?: string | null;
+  donorID?: string | null;
   fundraiserID: string;
   createdAt: string;
   updatedAt: string;
@@ -1261,15 +1346,13 @@ export type OnCreateFundraiserSubscription = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   Donations?: {
     __typename: "ModelDonationConnection";
     items: Array<{
       __typename: "Donation";
       id: string;
       amount: number;
-      donor_name?: string | null;
-      donor_email?: string | null;
-      donation_date?: string | null;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -1301,8 +1384,6 @@ export type OnCreateFundraiserSubscription = {
     items: Array<{
       __typename: "Member";
       id: string;
-      name?: string | null;
-      email_address: string;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -1328,6 +1409,7 @@ export type OnUpdateFundraiserSubscription = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   Donations?: {
     __typename: "ModelDonationConnection";
     items: Array<{
@@ -1337,6 +1419,7 @@ export type OnUpdateFundraiserSubscription = {
       donor_name?: string | null;
       donor_email?: string | null;
       donation_date?: string | null;
+      donorID?: string | null;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -1370,6 +1453,8 @@ export type OnUpdateFundraiserSubscription = {
       id: string;
       name?: string | null;
       email_address: string;
+      last_name: string;
+      phone_number: string;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -1395,6 +1480,7 @@ export type OnDeleteFundraiserSubscription = {
   goal: number;
   start_date: string;
   end_date: string;
+  creatorID: string;
   Donations?: {
     __typename: "ModelDonationConnection";
     items: Array<{
@@ -1404,6 +1490,7 @@ export type OnDeleteFundraiserSubscription = {
       donor_name?: string | null;
       donor_email?: string | null;
       donation_date?: string | null;
+      donorID?: string | null;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -1437,6 +1524,8 @@ export type OnDeleteFundraiserSubscription = {
       id: string;
       name?: string | null;
       email_address: string;
+      last_name: string;
+      phone_number: string;
       fundraiserID: string;
       createdAt: string;
       updatedAt: string;
@@ -1551,6 +1640,8 @@ export class APIService {
           __typename
           id
           amount
+          impact
+          reward
           fundraiserID
           createdAt
           updatedAt
@@ -1579,6 +1670,8 @@ export class APIService {
           __typename
           id
           amount
+          impact
+          reward
           fundraiserID
           createdAt
           updatedAt
@@ -1607,6 +1700,8 @@ export class APIService {
           __typename
           id
           amount
+          impact
+          reward
           fundraiserID
           createdAt
           updatedAt
@@ -1636,6 +1731,8 @@ export class APIService {
           id
           name
           email_address
+          last_name
+          phone_number
           fundraiserID
           createdAt
           updatedAt
@@ -1665,6 +1762,8 @@ export class APIService {
           id
           name
           email_address
+          last_name
+          phone_number
           fundraiserID
           createdAt
           updatedAt
@@ -1694,6 +1793,8 @@ export class APIService {
           id
           name
           email_address
+          last_name
+          phone_number
           fundraiserID
           createdAt
           updatedAt
@@ -1725,6 +1826,7 @@ export class APIService {
           donor_name
           donor_email
           donation_date
+          donorID
           fundraiserID
           createdAt
           updatedAt
@@ -1756,6 +1858,7 @@ export class APIService {
           donor_name
           donor_email
           donation_date
+          donorID
           fundraiserID
           createdAt
           updatedAt
@@ -1787,6 +1890,7 @@ export class APIService {
           donor_name
           donor_email
           donation_date
+          donorID
           fundraiserID
           createdAt
           updatedAt
@@ -1819,15 +1923,13 @@ export class APIService {
           goal
           start_date
           end_date
+          creatorID
           Donations {
             __typename
             items {
               __typename
               id
               amount
-              donor_name
-              donor_email
-              donation_date
               fundraiserID
               createdAt
               updatedAt
@@ -1844,6 +1946,8 @@ export class APIService {
               __typename
               id
               amount
+              impact
+              reward
               fundraiserID
               createdAt
               updatedAt
@@ -1859,8 +1963,6 @@ export class APIService {
             items {
               __typename
               id
-              name
-              email_address
               fundraiserID
               createdAt
               updatedAt
@@ -1902,6 +2004,7 @@ export class APIService {
           goal
           start_date
           end_date
+          creatorID
           Donations {
             __typename
             items {
@@ -1911,6 +2014,7 @@ export class APIService {
               donor_name
               donor_email
               donation_date
+              donorID
               fundraiserID
               createdAt
               updatedAt
@@ -1927,6 +2031,8 @@ export class APIService {
               __typename
               id
               amount
+              impact
+              reward
               fundraiserID
               createdAt
               updatedAt
@@ -1944,6 +2050,8 @@ export class APIService {
               id
               name
               email_address
+              last_name
+              phone_number
               fundraiserID
               createdAt
               updatedAt
@@ -1985,6 +2093,7 @@ export class APIService {
           goal
           start_date
           end_date
+          creatorID
           Donations {
             __typename
             items {
@@ -1994,6 +2103,7 @@ export class APIService {
               donor_name
               donor_email
               donation_date
+              donorID
               fundraiserID
               createdAt
               updatedAt
@@ -2027,6 +2137,8 @@ export class APIService {
               id
               name
               email_address
+              last_name
+              phone_number
               fundraiserID
               createdAt
               updatedAt
@@ -2163,6 +2275,8 @@ export class APIService {
           __typename
           id
           amount
+          impact
+          reward
           fundraiserID
           createdAt
           updatedAt
@@ -2191,6 +2305,8 @@ export class APIService {
             __typename
             id
             amount
+            impact
+            reward
             fundraiserID
             createdAt
             updatedAt
@@ -2230,6 +2346,8 @@ export class APIService {
             __typename
             id
             amount
+            impact
+            reward
             fundraiserID
             createdAt
             updatedAt
@@ -2266,6 +2384,8 @@ export class APIService {
           id
           name
           email_address
+          last_name
+          phone_number
           fundraiserID
           createdAt
           updatedAt
@@ -2295,6 +2415,8 @@ export class APIService {
             id
             name
             email_address
+            last_name
+            phone_number
             fundraiserID
             createdAt
             updatedAt
@@ -2335,6 +2457,8 @@ export class APIService {
             id
             name
             email_address
+            last_name
+            phone_number
             fundraiserID
             createdAt
             updatedAt
@@ -2373,6 +2497,7 @@ export class APIService {
           donor_name
           donor_email
           donation_date
+          donorID
           fundraiserID
           createdAt
           updatedAt
@@ -2404,6 +2529,7 @@ export class APIService {
             donor_name
             donor_email
             donation_date
+            donorID
             fundraiserID
             createdAt
             updatedAt
@@ -2446,6 +2572,7 @@ export class APIService {
             donor_name
             donor_email
             donation_date
+            donorID
             fundraiserID
             createdAt
             updatedAt
@@ -2485,6 +2612,7 @@ export class APIService {
           goal
           start_date
           end_date
+          creatorID
           Donations {
             __typename
             items {
@@ -2494,6 +2622,7 @@ export class APIService {
               donor_name
               donor_email
               donation_date
+              donorID
               fundraiserID
               createdAt
               updatedAt
@@ -2510,6 +2639,8 @@ export class APIService {
               __typename
               id
               amount
+              impact
+              reward
               fundraiserID
               createdAt
               updatedAt
@@ -2527,6 +2658,8 @@ export class APIService {
               id
               name
               email_address
+              last_name
+              phone_number
               fundraiserID
               createdAt
               updatedAt
@@ -2568,6 +2701,7 @@ export class APIService {
             goal
             start_date
             end_date
+            creatorID
             Donations {
               __typename
               nextToken
@@ -2625,6 +2759,7 @@ export class APIService {
             goal
             start_date
             end_date
+            creatorID
             Donations {
               __typename
               nextToken
@@ -2743,6 +2878,8 @@ export class APIService {
           __typename
           id
           amount
+          impact
+          reward
           fundraiserID
           createdAt
           updatedAt
@@ -2765,6 +2902,8 @@ export class APIService {
           __typename
           id
           amount
+          impact
+          reward
           fundraiserID
           createdAt
           updatedAt
@@ -2787,6 +2926,8 @@ export class APIService {
           __typename
           id
           amount
+          impact
+          reward
           fundraiserID
           createdAt
           updatedAt
@@ -2810,6 +2951,8 @@ export class APIService {
           id
           name
           email_address
+          last_name
+          phone_number
           fundraiserID
           createdAt
           updatedAt
@@ -2833,6 +2976,8 @@ export class APIService {
           id
           name
           email_address
+          last_name
+          phone_number
           fundraiserID
           createdAt
           updatedAt
@@ -2856,6 +3001,8 @@ export class APIService {
           id
           name
           email_address
+          last_name
+          phone_number
           fundraiserID
           createdAt
           updatedAt
@@ -2881,6 +3028,7 @@ export class APIService {
           donor_name
           donor_email
           donation_date
+          donorID
           fundraiserID
           createdAt
           updatedAt
@@ -2906,6 +3054,7 @@ export class APIService {
           donor_name
           donor_email
           donation_date
+          donorID
           fundraiserID
           createdAt
           updatedAt
@@ -2931,6 +3080,7 @@ export class APIService {
           donor_name
           donor_email
           donation_date
+          donorID
           fundraiserID
           createdAt
           updatedAt
@@ -2957,15 +3107,13 @@ export class APIService {
           goal
           start_date
           end_date
+          creatorID
           Donations {
             __typename
             items {
               __typename
               id
               amount
-              donor_name
-              donor_email
-              donation_date
               fundraiserID
               createdAt
               updatedAt
@@ -2982,6 +3130,8 @@ export class APIService {
               __typename
               id
               amount
+              impact
+              reward
               fundraiserID
               createdAt
               updatedAt
@@ -2997,8 +3147,6 @@ export class APIService {
             items {
               __typename
               id
-              name
-              email_address
               fundraiserID
               createdAt
               updatedAt
@@ -3034,6 +3182,7 @@ export class APIService {
           goal
           start_date
           end_date
+          creatorID
           Donations {
             __typename
             items {
@@ -3043,6 +3192,7 @@ export class APIService {
               donor_name
               donor_email
               donation_date
+              donorID
               fundraiserID
               createdAt
               updatedAt
@@ -3059,6 +3209,8 @@ export class APIService {
               __typename
               id
               amount
+              impact
+              reward
               fundraiserID
               createdAt
               updatedAt
@@ -3076,6 +3228,8 @@ export class APIService {
               id
               name
               email_address
+              last_name
+              phone_number
               fundraiserID
               createdAt
               updatedAt
@@ -3111,6 +3265,7 @@ export class APIService {
           goal
           start_date
           end_date
+          creatorID
           Donations {
             __typename
             items {
@@ -3120,6 +3275,7 @@ export class APIService {
               donor_name
               donor_email
               donation_date
+              donorID
               fundraiserID
               createdAt
               updatedAt
@@ -3136,6 +3292,8 @@ export class APIService {
               __typename
               id
               amount
+              impact
+              reward
               fundraiserID
               createdAt
               updatedAt
@@ -3153,6 +3311,8 @@ export class APIService {
               id
               name
               email_address
+              last_name
+              phone_number
               fundraiserID
               createdAt
               updatedAt

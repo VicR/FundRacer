@@ -2,5 +2,11 @@
   "AppSyncApiName": "FundRacerAPI",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-03-07T17:01:49.835Z"
+  "AuthModeLastUpdated": "2022-04-08T05:09:06.418Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authFundRacer",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

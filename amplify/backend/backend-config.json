@@ -15,6 +15,12 @@
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authFundRacer"
+              }
             }
           ]
         }
@@ -33,6 +39,7 @@
           "EMAIL"
         ],
         "signupAttributes": [
+          "PREFERRED_USERNAME",
           "EMAIL",
           "NAME"
         ],
