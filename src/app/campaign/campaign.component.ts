@@ -110,7 +110,8 @@ export class CampaignComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(AddLevelPopupComponent, {
-      width: '700px'
+      width: '700px',
+      height: '300px'
     });
 
     // dialogRef.afterClosed().subscribe(result => {

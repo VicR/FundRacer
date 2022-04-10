@@ -1,11 +1,11 @@
-<div class="content" role="main">
+<div class="content p-8" role="main" style="padding: 12px;">
 <h1>Registered members</h1>
-<button  class="mat-raised-button mat-primary header-align-left" (click)="openDialog()">
+<button  class="mat-raised-button mat-primary button" (click)="openDialog()">
   Add member
 </button>
-<button class="mat-raised-button mat-accent header-align-right">
+<!-- <button class="mat-raised-button mat-accent header-align-right ">
   Send Email
-</button>
+</button> -->
 
 <mat-form-field>
     <input matInput type="text" placeholder="Filter" (keyup)="applyFilter($event)">
