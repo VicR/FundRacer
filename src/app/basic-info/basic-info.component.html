@@ -1,8 +1,7 @@
 <div class="container">
   <div class="p-8" *ngIf="user_role == 'Managers'">
     <h1 class="bold">Start your own Fundraiser. We are here to help you!</h1>
-    <h3>People around the world are raising money for what they are passionate about. <br/>
-      FundRacer is the best place to fundraise, whether you are an individual, group or any organization.</h3>
+    <h3>FundRacer is the best place to support your favorite racer or team.</h3>
     <h3></h3>
     <img style="width:100%" src="/assets/background.jpg"/>
 </div>
@@ -30,7 +29,7 @@
                     </h1>
                   </mat-card-title>
                   <mat-card-subtitle>
-                    <h2 class="bold">Your goal {{ fundraiser.goal }}$</h2>
+                    <h2 class="bold">Your goal ${{ fundraiser.goal }}</h2>
                   </mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image src="" alt="">
@@ -49,7 +48,7 @@
       </div>
 
       <ng-template #formBlock>
-        <h3 class="bold">CREATE YOUR OWN FUNDRAISER</h3>
+        <h3 class="bold">CREATE YOUR FUNDRAISER TODAY</h3>
         <form autocomplete="off" [formGroup]="fundraiserForm" (ngSubmit)="onCreateFundraiser(fundraiserForm.value)">
           <div class="form-container">
             <mat-form-field floatLabel="never">
@@ -63,7 +62,7 @@
             </mat-form-field>
         
             <mat-form-field floatLabel="never">
-              <label>Goal:</label>
+              <label>Money goal:</label>
               <input type="number" min="1" matInput formControlName="goal">
             </mat-form-field>
         

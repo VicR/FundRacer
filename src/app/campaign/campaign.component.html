@@ -12,7 +12,7 @@
                 <mat-tab-group >
                     <div *ngIf="fundraisers.length > 0; else createBlock">
                         <mat-tab label="Basic Info">
-                            <app-basic-info [fundraisers]="fundraisers" [user]="current_user"></app-basic-info>
+                            <app-basic-info [fundraisers]="fundraisers" [user]="current_user" [user_role]="user_role"></app-basic-info>
                             <mat-card class="total-card">
                                 <mat-card-header>
                                     <img mat-card-avatar src="favicon.ico">
@@ -101,12 +101,11 @@
 
                     <ng-template #createBlock>
                         <mat-tab label="Create Fundraiser">
-                            <app-basic-info [fundraisers]="fundraisers" [user]="current_user" style="padding: 12px;"></app-basic-info>
+                            <app-basic-info [fundraisers]="fundraisers" [user]="current_user" [user_role]="user_role" style="padding: 12px;"></app-basic-info>
                         </mat-tab>
                     </ng-template>
                 </mat-tab-group>
                 </div>
-
 
                 <div *ngIf="user_role == 'Donors'">
                     <div *ngIf="fundraisers.length > 0; else noFundraisersBlock">
@@ -118,7 +117,23 @@
                                 <h1>Welcome</h1>
                                 <h1>RacerX FundRaiser</h1>
                                 </div> -->
-                                <app-basic-info [fundraisers]="fundraisers" [user]="current_user" style="padding: 12px;"></app-basic-info>
+                                <app-basic-info [fundraisers]="fundraisers" [user]="current_user" [user_role]="user_role" style="padding: 12px;"></app-basic-info>
+                                <mat-card class="total-card">
+                                    <mat-card-header>
+                                        <img mat-card-avatar src="favicon.ico">
+                                        <mat-card-title>
+                                            <h1> {{total_donation_amount}} </h1>
+                                        </mat-card-title>
+                                        <mat-card-subtitle>
+                                            <h1> donated out of ${{fundraisers[0].goal}} goal </h1>
+                                        </mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <div fxLayout="row">
+                                            <h2>{{days_remaining}}</h2>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
                                 <div class="panel panel-primary">
                                 <div class="panel-heading"><h2>About Info</h2></div>
                                 <div class="panel-body">
@@ -138,7 +153,7 @@
                                 </div>
                                 <!-- <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();"> Select All donations -->
                                 <div *ngFor="let item of level_list">
-                                    <mat-card class="level-card" >
+                                    <mat-card class="level-card-donor" (click)="addDonationValue(item.money)">
                                         <mat-card-title-group>
                                             <mat-card-title>Donation - ${{ item.money}}</mat-card-title>
                                             <mat-card-subtitle></mat-card-subtitle>
@@ -166,20 +181,6 @@
                                         </mat-card-content>
                                     </mat-card>
                                 </div>
-
-                                <mat-card class="total-card">
-                                    <mat-card-header>
-                                        <img mat-card-avatar src="favicon.ico">
-                                        <mat-card-title><h1> {{total_donation_amount}} </h1></mat-card-title>
-                                        <mat-card-subtitle><h1> donated out of ${{fundraisers[0].goal}} goal </h1></mat-card-subtitle>
-                                    </mat-card-header>
-                                    <mat-card-content>
-                                        <div fxLayout="row">
-                                            <h2>{{days_remaining}}</h2>
-                                        </div>
-                                    </mat-card-content>
-                                </mat-card>
-
                                     <!-- <mat-checkbox [(ngModel)]="checkbox_value" 
                                     class="example-ripple-checkbox">Set minimum donation amount</mat-checkbox> -->
 
@@ -194,7 +195,7 @@
                                     <!-- <button (click)="onDonate(donation_amount)" class="m-3 mat-raised-button mat-primary" color="green">Donate</button> -->
                                 <mat-card class="donation-card">
                                     <mat-card-title-group>
-                                        <mat-card-title>Your Donation</mat-card-title>
+                                        <mat-card-title>Help out this cause</mat-card-title>
                                     </mat-card-title-group>
                                     <mat-card-content>
                                         <div fxLayout="row">
@@ -214,7 +215,7 @@
                             
                                                             <mat-form-field floatLabel="never">
                                                                 <label>Amount</label>
-                                                                <input matInput type="number" min="1" placeholder="Amount in dollars" formControlName="amount">
+                                                                <input id="donationValue" matInput type="number" min="1" placeholder="In dollars" formControlName="amount">
                                                             </mat-form-field>
                                                         </div>
                                                         <button class="mat-raised-button mat-primary" type="submit">Donate</button>

@@ -38,6 +38,7 @@ export class CampaignComponent implements OnInit {
       this.onAuthEvent(payload);
       // console.log('A new auth event has happened: ', data.payload.data.username + ' has ' + data.payload.event);
     })
+
     this.donateForm = this.fb.group({
       donor_name: ["", Validators.required],
       donor_email: ["", Validators.required],
@@ -146,4 +147,8 @@ export class CampaignComponent implements OnInit {
       });
   }
 
+  public addDonationValue(amount) {
+    (<HTMLInputElement>document.getElementById('donationValue')).value = amount;
+  }
+  
 }

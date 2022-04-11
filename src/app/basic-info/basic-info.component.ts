@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { APIService, Fundraiser } from "../API.service";
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
-import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'app-basic-info',
@@ -14,13 +13,12 @@ export class BasicInfoComponent implements OnInit {
   endDate = new Date(2022, 4, 1)
   title = "FundRacer";
   public fundraiserForm: FormGroup;
-  public current_user;
-  public user_role: string;
   // private subscription: Subscription | null = null;
-
+  
   /* declare fundraisers variable */
   // public fundraisers: Array<Fundraiser> = [];
   @Input() fundraisers: Array<Fundraiser>;
+  @Input() user_role: string;
   @Input() user;
 
   constructor(private api: APIService, private fb: FormBuilder) {
@@ -33,28 +31,7 @@ export class BasicInfoComponent implements OnInit {
     });
   }
 
-  async ngOnInit() {
-
-    // Get Cognito User data
-    Auth.currentAuthenticatedUser({
-      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-    }).then((user) => {
-      console.log(user)
-      this.current_user = user;
-      this.user_role = user.signInUserSession.accessToken.payload["cognito:groups"][0]
-    }).catch(err => console.log(err));
-    /* fetch fundraisers when app loads */
-    // this.api.ListFundraisers().then(event => {
-    //   this.fundraisers = event.items as Fundraiser[];
-    // });
-
-    /* subscribe to new fundraisers being created */
-    // this.subscription = <Subscription>(
-    //   this.api.OnCreateFundraiserListener.subscribe((event: any) => {
-    //     const newFundraiser = event.value.data.onCreateFundraiser;
-    //     this.fundraisers = [newFundraiser, ...this.fundraisers];
-    //   })
-    // );
+  ngOnInit() {
   }
 
   public onCreateFundraiser(fundraiser: Fundraiser) {
