@@ -13,8 +13,8 @@
     }
   }
 
-  .example-full-width {
-    width: 100%;
+  .example-width {
+    width: 50%;
   }
 
   .example-ripple-checkbox {
@@ -111,6 +111,13 @@
     margin: 10px !important;
   }
 
+  .level-card-donor {
+    max-width: 50% !important;
+    background-color: lightblue;
+    margin: 10px !important;
+    cursor: pointer;
+  }
+
   .donation-card {
     max-width: 50% !important;
     background-color: lightsteelblue;
@@ -118,8 +125,8 @@
   }
 
   .total-card {
-    max-width: 20% !important;
-    background-color: darkkhaki;
+    max-width: 40% !important;
+    background-color:aquamarine;
     margin: 10px !important;
   }
 
@@ -142,3 +149,17 @@
     display: flex;
     align-items: center;
   }
+
+  .container{
+      padding: 8px !important;
+  }
+
+  .p-12{
+    padding-right : 12px
+  }
+
+  #panel{
+    padding: 12px;
+  }
+
+

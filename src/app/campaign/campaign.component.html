@@ -1,7 +1,7 @@
 <amplify-authenticator>
     <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
     <div class="container">
-        <div id="content">
+        <div id="content" style="background-color:rgb(234, 239, 245) !important">
             <div id="main-content">
                 <mat-toolbar class="mat-elevation-z5" color="primary">
                     Welcome to RacerX {{ user.attributes.name }}!
@@ -9,15 +9,16 @@
                     <button class="mat-raised-button mat-accent pull-right" (click)="signOut()" style="float: right !important;">Sign Out</button>
                 </mat-toolbar>
                 <div *ngIf="user_role == 'Managers' && !!fundraisers">
-                <mat-tab-group style="padding: 12px;">
+                <mat-tab-group >
                     <div *ngIf="fundraisers.length > 0; else createBlock">
                         <mat-tab label="Basic Info">
-                            <app-basic-info [fundraisers]="fundraisers" [user]="current_user" style="padding: 12px;"></app-basic-info>
+                            <app-basic-info [fundraisers]="fundraisers" [user]="current_user" [user_role]="user_role"></app-basic-info>
                             <mat-card class="total-card">
-                                <mat-card-title-group>
-                                    <mat-card-title>${{total_donation_amount}}</mat-card-title>
-                                    <mat-card-subtitle>donated out of ${{fundraisers[0].goal}} goal</mat-card-subtitle>
-                                </mat-card-title-group>
+                                <mat-card-header>
+                                    <img mat-card-avatar src="favicon.ico">
+                                    <mat-card-title><h1> {{total_donation_amount}} </h1></mat-card-title>
+                                    <mat-card-subtitle><h1> donated out of ${{fundraisers[0].goal}} goal </h1></mat-card-subtitle>
+                                </mat-card-header>
                                 <mat-card-content>
                                     <div fxLayout="row">
                                         <h2>{{days_remaining}}</h2>
@@ -26,24 +27,24 @@
                             </mat-card>
                         </mat-tab>
                         <mat-tab label="WebPage">
-                                <div class="container">
+                                <div class="container ">
                                     <div class="panel panel-primary">
-                                    <div class="panel-heading"><h2>About Info</h2></div>
-                                    <div class="panel-body">
-                                        <mat-form-field class="example-full-width" appearance="fill">
-                                        <mat-label>Give out your Company Info...</mat-label>
-                                        <textarea rows="5" cols="40" matInput [(ngModel)]="about_info"></textarea>
-                                        </mat-form-field>
-                                    </div>
+                                        <div class="panel-heading"><h2>About Info</h2></div>
+                                        <div class="panel-body">
+                                            <mat-form-field class="example-width" appearance="fill">
+                                            <mat-label>Give out your Company Info...</mat-label>
+                                            <textarea rows="8" cols="40" matInput [(ngModel)]="about_info"></textarea>
+                                            </mat-form-field>
+                                        </div>
                                     </div>
                                 
                                     <div class="panel-heading"><h2>How are funds raised?</h2></div>
                                     <div class="panel-body">
-                                    <mat-form-field class="example-full-width" appearance="fill">
-                                        <mat-label>Leave a comment on why does the organization need funds?</mat-label>
-                                        <textarea rows="5" cols="40" matInput [(ngModel)]="funds_comment">
-                                        </textarea>
-                                    </mat-form-field>
+                                        <mat-form-field class="example-width" appearance="fill">
+                                            <mat-label>Leave a comment on why does the organization need funds?</mat-label>
+                                            <textarea rows="8" cols="40" matInput [(ngModel)]="funds_comment">
+                                            </textarea>
+                                        </mat-form-field>
                                     <!-- <h3>
                                         Motorsports are expensive; the costs of acquiring one or more vehicles are high, 
                                         and when the costs of maintenance, fuel, and participation in races are taken into account then things really start to add up. 
@@ -73,7 +74,7 @@
                                                 <mat-card fxLayout="row" fxFlex="80%" class="center space-top">
                                                     <mat-card-content fxLayout.gt-sm="row">
                                                     <div fxLayout.gt-sm="column" fxFlex.gt-sm="40%">
-                                                        <img mat-card-lg-image src="assets\racer.png" >
+                                                        <img mat-card-lg-image class="p-12" src="assets\dollar.jpg" >
                                                     </div>
                                                     <div fxLayout.gt-sm="column" fxFlex.gt-sm="50%" class="gutter">
                                                         <strong><a href="#">Donation Impact:</a></strong>
@@ -94,18 +95,17 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="Members">
-                            <app-members style="padding: 12px;"> </app-members>
+                            <app-members> </app-members>
                         </mat-tab>
                     </div>
 
                     <ng-template #createBlock>
                         <mat-tab label="Create Fundraiser">
-                            <app-basic-info [fundraisers]="fundraisers" [user]="current_user" style="padding: 12px;"></app-basic-info>
+                            <app-basic-info [fundraisers]="fundraisers" [user]="current_user" [user_role]="user_role" style="padding: 12px;"></app-basic-info>
                         </mat-tab>
                     </ng-template>
                 </mat-tab-group>
                 </div>
-
 
                 <div *ngIf="user_role == 'Donors'">
                     <div *ngIf="fundraisers.length > 0; else noFundraisersBlock">
@@ -117,52 +117,43 @@
                                 <h1>Welcome</h1>
                                 <h1>RacerX FundRaiser</h1>
                                 </div> -->
-                                <app-basic-info [fundraisers]="fundraisers" [user]="current_user" style="padding: 12px;"></app-basic-info>
+                                <app-basic-info [fundraisers]="fundraisers" [user]="current_user" [user_role]="user_role" style="padding: 12px;"></app-basic-info>
+                                <mat-card class="total-card">
+                                    <mat-card-header>
+                                        <img mat-card-avatar src="favicon.ico">
+                                        <mat-card-title>
+                                            <h1> {{total_donation_amount}} </h1>
+                                        </mat-card-title>
+                                        <mat-card-subtitle>
+                                            <h1> donated out of ${{fundraisers[0].goal}} goal </h1>
+                                        </mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <div fxLayout="row">
+                                            <h2>{{days_remaining}}</h2>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
                                 <div class="panel panel-primary">
                                 <div class="panel-heading"><h2>About Info</h2></div>
                                 <div class="panel-body">
-                                    <mat-form-field class="example-full-width" appearance="fill">
-                                    <mat-label>Give out your Company Info...</mat-label>
-                                    <textarea rows="5" cols="40" matInput [(ngModel)]="about_info"></textarea>
-                                    </mat-form-field>
-                                
-                                    <!-- <h3>
-                                        WE ARE DEEPLY ROOTED IN MOTO—WE’VE BEEN HERE ALL OUR LIVES. 
-                                    Back in 1998 when we turned an underground newspaper into a shiny color magazine, 
-                                    it immediately changed the game with its unprecedented depth of coverage, sense of humor, 
-                                    and access to the sport’s biggest names. Today, our readers know they can go to Racer X Online for all the news, 
-                                    race results, and event coverage they need, and then enjoy even more detail and perspective in the pages of Racer X Illustrated. 
-                                    The mag offers a chance to learn something new on every page and stay connected with the people and personalities that shape our 
-                                    sport—the competitors out on the racetrack, as well as the ones behind the scenes—through our exclusive deep-dive stories and 
-                                    columns.
-                            
-                                    Our trademark has always been insider knowledge from the experts who are at the races and around the sport. 
-                                    We have long prided ourselves on our unparalleled race reporting and detailed storytelling. 
-                                    We go deep with the riders and teams to provide comprehensive coverage you won’t find anywhere else—all with 
-                                    first-class photography and design. It’s a full education in motocross past, present, and future.
-                                    </h3> -->
+                                    <p> 
+                                        {{ about_info }}
+                                    </p>
                                 </div>
                                 </div>
                             
-                                <div class="panel-heading"><h2>How are funds raised?</h2></div>
-                                <div class="panel-body">
-                                <mat-form-field class="example-full-width" appearance="fill">
-                                    <mat-label>Leave a comment on why does the organization need funds?</mat-label>
-                                    <textarea rows="5" cols="40" matInput [(ngModel)]="funds_comment">
-                                    </textarea>
-                                </mat-form-field>
-                                <!-- <h3>
-                                    Motorsports are expensive; the costs of acquiring one or more vehicles are high, 
-                                    and when the costs of maintenance, fuel, and participation in races are taken into account then things really start to add up. 
-                                    There are cases where the only reason a racer cannot compete is money; that’s where FundRacer comes in. 
-                                    FundRacer will enable racers to have more opportunities by allowing anyone to donate to their team, 
-                                    and it will empower local communities and supporters by giving them the opportunity to allow their favorite racer 
-                                    to travel and participate in more events.
-                                </h3> -->
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading"><h2>How are funds raised?</h2></div>
+                                    <div class="panel-body">
+                                        <p> 
+                                            {{ funds_comment }}
+                                        </p>
+                                    </div>
                                 </div>
                                 <!-- <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();"> Select All donations -->
                                 <div *ngFor="let item of level_list">
-                                    <mat-card class="level-card" >
+                                    <mat-card class="level-card-donor" (click)="addDonationValue(item.money)">
                                         <mat-card-title-group>
                                             <mat-card-title>Donation - ${{ item.money}}</mat-card-title>
                                             <mat-card-subtitle></mat-card-subtitle>
@@ -172,7 +163,7 @@
                                                 <mat-card fxLayout="row" fxFlex="80%" class="center space-top">
                                                     <mat-card-content fxLayout.gt-sm="row">
                                                     <div fxLayout.gt-sm="column" fxFlex.gt-sm="40%">
-                                                        <img mat-card-lg-image src="assets\racer.png" >
+                                                        <img mat-card-lg-image class="p-12" src="assets\dollar.jpg" >
                                                     </div>
                                                     <div fxLayout.gt-sm="column" fxFlex.gt-sm="50%" class="gutter">
                                                         <strong><a href="#">Donation Impact:</a></strong>
@@ -190,7 +181,6 @@
                                         </mat-card-content>
                                     </mat-card>
                                 </div>
-
                                     <!-- <mat-checkbox [(ngModel)]="checkbox_value" 
                                     class="example-ripple-checkbox">Set minimum donation amount</mat-checkbox> -->
 
@@ -205,7 +195,7 @@
                                     <!-- <button (click)="onDonate(donation_amount)" class="m-3 mat-raised-button mat-primary" color="green">Donate</button> -->
                                 <mat-card class="donation-card">
                                     <mat-card-title-group>
-                                        <mat-card-title>Your Donation</mat-card-title>
+                                        <mat-card-title>Help out this cause</mat-card-title>
                                     </mat-card-title-group>
                                     <mat-card-content>
                                         <div fxLayout="row">
@@ -225,7 +215,7 @@
                             
                                                             <mat-form-field floatLabel="never">
                                                                 <label>Amount</label>
-                                                                <input matInput type="number" min="1" placeholder="Amount in dollars" formControlName="amount">
+                                                                <input id="donationValue" matInput type="number" min="1" placeholder="In dollars" formControlName="amount">
                                                             </mat-form-field>
                                                         </div>
                                                         <button class="mat-raised-button mat-primary" type="submit">Donate</button>
@@ -235,17 +225,7 @@
                                         </div>
                                     </mat-card-content>
                                 </mat-card>
-                                <mat-card class="total-card">
-                                    <mat-card-title-group>
-                                        <mat-card-title>${{total_donation_amount}}</mat-card-title>
-                                        <mat-card-subtitle>donated out of ${{fundraisers[0].goal}} goal</mat-card-subtitle>
-                                    </mat-card-title-group>
-                                    <mat-card-content>
-                                        <div fxLayout="row">
-                                            <h2>{{days_remaining}}</h2>
-                                        </div>
-                                    </mat-card-content>
-                                </mat-card>
+                              
                             </div>
                         </mat-tab>
                     </mat-tab-group>

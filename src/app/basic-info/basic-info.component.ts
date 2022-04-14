@@ -14,10 +14,11 @@ export class BasicInfoComponent implements OnInit {
   title = "FundRacer";
   public fundraiserForm: FormGroup;
   // private subscription: Subscription | null = null;
-
+  
   /* declare fundraisers variable */
   // public fundraisers: Array<Fundraiser> = [];
   @Input() fundraisers: Array<Fundraiser>;
+  @Input() user_role: string;
   @Input() user;
 
   constructor(private api: APIService, private fb: FormBuilder) {
@@ -30,19 +31,7 @@ export class BasicInfoComponent implements OnInit {
     });
   }
 
-  async ngOnInit() {
-    /* fetch fundraisers when app loads */
-    // this.api.ListFundraisers().then(event => {
-    //   this.fundraisers = event.items as Fundraiser[];
-    // });
-
-    /* subscribe to new fundraisers being created */
-    // this.subscription = <Subscription>(
-    //   this.api.OnCreateFundraiserListener.subscribe((event: any) => {
-    //     const newFundraiser = event.value.data.onCreateFundraiser;
-    //     this.fundraisers = [newFundraiser, ...this.fundraisers];
-    //   })
-    // );
+  ngOnInit() {
   }
 
   public onCreateFundraiser(fundraiser: Fundraiser) {

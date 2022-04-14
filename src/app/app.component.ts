@@ -30,6 +30,9 @@ export class AppComponent implements OnInit {
     this.api.ListFundraisers().then(event => {
       this.fundraisers = event.items as Fundraiser[];
     });
+  }
+
+}
 
     /* subscribe to new fundraisers being created */
     // this.subscription = <Subscription>(
@@ -38,7 +41,7 @@ export class AppComponent implements OnInit {
     //     this.fundraisers = [newFundraiser, ...this.fundraisers];
     //   })
     // );
-  }
+  
 
   // public onCreate(fundraiser: Fundraiser) {
   //   this.api
@@ -58,4 +61,3 @@ export class AppComponent implements OnInit {
   //   }
   //   this.subscription = null;
   // }
-}

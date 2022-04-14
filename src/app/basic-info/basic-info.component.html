@@ -1,63 +1,86 @@
 <div class="container">
-<div class="content" role="main">
-  <div *ngIf="fundraisers && fundraisers.length > 0; else formBlock">
-      <div *ngFor="let fundraiser of fundraisers">
-        <div class="card-container">
-          <mat-card class="fundraiser-card" style="width:100%">
-            <mat-card-header>
-              <img mat-card-avatar src="favicon.ico">
-              <mat-card-title>{{ fundraiser.name }}</mat-card-title>
-              <mat-card-subtitle></mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="" alt="">
-            <mat-card-content>
-              <p>
-                {{fundraiser.description}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
-                </mat-card-actions>
-          </mat-card>
-        </div>
-      </div>
-  </div>
-
-  <ng-template #formBlock>
-    <h2>Create a Fundraiser</h2>
-    <form autocomplete="off" [formGroup]="fundraiserForm" (ngSubmit)="onCreateFundraiser(fundraiserForm.value)">
-      <div class="form-container">
-        <mat-form-field floatLabel="never">
-          <label>Title:</label>
-          <input matInput formControlName="name">
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never">
-          <label>Description:</label>
-          <textarea formControlName="description" matInput></textarea>
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never">
-          <label>Goal:</label>
-          <input type="number" min="1" matInput formControlName="goal">
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never">
-          <label>Start Date:</label>
-          <input type="date" matInput formControlName="start_date">
-        </mat-form-field>
-    
-        <mat-form-field floatLabel="never">
-          <label>End Date:</label>
-          <input type="date" matInput formControlName="end_date">
-        </mat-form-field>
-    
-      </div>
-      <button class="mat-raised-button mat-primary" type="submit">Create</button>
-    </form>
-  </ng-template>
+  <div class="p-8" *ngIf="user_role == 'Managers'">
+    <h1 class="bold">Start your own Fundraiser. We are here to help you!</h1>
+    <h3>FundRacer is the best place to support your favorite racer or team.</h3>
+    <h3></h3>
+    <img style="width:100%" src="/assets/background.jpg"/>
 </div>
+
+<div class="p-8" *ngIf="user_role == 'Donors'">
+    <h1 class="bold">Let the good times roll.</h1>
+    <h3>
+      FundRacer is the best place to support bikers, whether you are an individual, group or any organization. <br/>
+      Make Each Moment Count. Make Each Dollar Matter.
+    </h3>
+    <img style="width:50%; max-height:400px" src="/assets/bikes.gif"/>
+</div>
+ 
+  <div>
+
+      <div *ngIf="fundraisers && fundraisers.length > 0; else formBlock">
+          <div *ngFor="let fundraiser of fundraisers">
+            <div class="card-container">
+              <mat-card class="fundraiser-card" style="width:100%">
+                <mat-card-header>
+                  <img style="width:30%;height:40%"mat-card-avatar src="/assets/R.jpg/">
+                  <mat-card-title>
+                    <h1 class="bold">
+                      {{ fundraiser.name }}
+                    </h1>
+                  </mat-card-title>
+                  <mat-card-subtitle>
+                    <h2 class="bold">Your goal ${{ fundraiser.goal }}</h2>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="" alt="">
+                <mat-card-content>
+                  <p>
+                    {{fundraiser.description}}
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                        <button mat-button>SHARE</button>
+                    </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+      </div>
+
+      <ng-template #formBlock>
+        <h3 class="bold">CREATE YOUR FUNDRAISER TODAY</h3>
+        <form autocomplete="off" [formGroup]="fundraiserForm" (ngSubmit)="onCreateFundraiser(fundraiserForm.value)">
+          <div class="form-container">
+            <mat-form-field floatLabel="never">
+              <label>Title:</label>
+              <input matInput formControlName="name">
+            </mat-form-field>
+        
+            <mat-form-field floatLabel="never">
+              <label>Description:</label>
+              <textarea rows="5" cols="40" formControlName="description" matInput></textarea>
+            </mat-form-field>
+        
+            <mat-form-field floatLabel="never">
+              <label>Money goal:</label>
+              <input type="number" min="1" matInput formControlName="goal">
+            </mat-form-field>
+        
+            <mat-form-field floatLabel="never">
+              <label>Start Date:</label>
+              <input type="date" matInput formControlName="start_date">
+            </mat-form-field>
+        
+            <mat-form-field floatLabel="never">
+              <label>End Date:</label>
+              <input type="date" matInput formControlName="end_date">
+            </mat-form-field>
+        
+          </div>
+          <button mat-raised-button color="primary" type="submit">Create</button>
+        </form>
+      </ng-template>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
